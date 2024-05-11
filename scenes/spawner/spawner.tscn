@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcu5o3ph3b24v"]
+
+[ext_resource type="Script" path="res://scenes/spawner/spawner.gd" id="1_8igj3"]
+[ext_resource type="PackedScene" uid="uid://dj65kh3cc6852" path="res://scenes/pipes/pipes.tscn" id="2_v8qt3"]
+
+[node name="spawner" type="Node2D"]
+script = ExtResource("1_8igj3")
+pipe_scene = ExtResource("2_v8qt3")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="uppermarker" type="Marker2D" parent="."]
+
+[node name="lowermarker" type="Marker2D" parent="."]
+position = Vector2(0, 200)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

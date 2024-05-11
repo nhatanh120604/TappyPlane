@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8w841pf7ie1g"]
+[gd_scene load_steps=7 format=3 uid="uid://c8w841pf7ie1g"]
 
+[ext_resource type="Script" path="res://scenes/game/game.gd" id="1_tvrm4"]
 [ext_resource type="Texture2D" uid="uid://dwwefnrofcmc7" path="res://assets/background/rocks_2.png" id="1_ytdfp"]
 [ext_resource type="PackedScene" uid="uid://cyuup1wda8g01" path="res://scenes/plane/plane.tscn" id="2_u6pnd"]
 [ext_resource type="PackedScene" uid="uid://beyr4lwstjafd" path="res://scenes/barrier/barrier.tscn" id="3_jtx16"]
+[ext_resource type="PackedScene" uid="uid://dcu5o3ph3b24v" path="res://scenes/spawner/spawner.tscn" id="4_0afx1"]
+[ext_resource type="PackedScene" uid="uid://cvhrghkm4kemy" path="res://scenes/hud/hud.tscn" id="6_oqnad"]
 
 [node name="Game" type="Node2D"]
+script = ExtResource("1_tvrm4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(162, 334)
@@ -13,7 +17,16 @@ texture = ExtResource("1_ytdfp")
 [node name="plane" parent="." instance=ExtResource("2_u6pnd")]
 position = Vector2(83, 503)
 
-[node name="Barrier" parent="." instance=ExtResource("3_jtx16")]
+[node name="Barrier" type="Node" parent="."]
 
-[node name="Barrier2" parent="." instance=ExtResource("3_jtx16")]
+[node name="Barrier1" parent="Barrier" instance=ExtResource("3_jtx16")]
+
+[node name="Barrier2" parent="Barrier" instance=ExtResource("3_jtx16")]
 position = Vector2(0, 874)
+
+[node name="spawner" parent="." instance=ExtResource("4_0afx1")]
+position = Vector2(540, 340)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="hud" parent="CanvasLayer" instance=ExtResource("6_oqnad")]

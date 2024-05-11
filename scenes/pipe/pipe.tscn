@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3i55v0ykwyda"]
+
+[ext_resource type="Script" path="res://scenes/pipe/pipe.gd" id="1_l6l2y"]
+[ext_resource type="Texture2D" uid="uid://7d1ns43an70m" path="res://assets/pipes/pipe.png" id="1_xp73e"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbgru"]
+radius = 35.0
+height = 516.0
+
+[node name="pipe" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_l6l2y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_xp73e")
+centered = false
+offset = Vector2(-35, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 327)
+shape = SubResource("CapsuleShape2D_pbgru")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
