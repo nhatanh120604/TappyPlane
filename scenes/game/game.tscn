@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c8w841pf7ie1g"]
+[gd_scene load_steps=9 format=3 uid="uid://c8w841pf7ie1g"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_tvrm4"]
 [ext_resource type="Texture2D" uid="uid://dwwefnrofcmc7" path="res://assets/background/rocks_2.png" id="1_ytdfp"]
@@ -6,11 +6,14 @@
 [ext_resource type="PackedScene" uid="uid://beyr4lwstjafd" path="res://scenes/barrier/barrier.tscn" id="3_jtx16"]
 [ext_resource type="PackedScene" uid="uid://dcu5o3ph3b24v" path="res://scenes/spawner/spawner.tscn" id="4_0afx1"]
 [ext_resource type="PackedScene" uid="uid://cvhrghkm4kemy" path="res://scenes/hud/hud.tscn" id="6_oqnad"]
+[ext_resource type="PackedScene" uid="uid://b1be6it6trtuv" path="res://scenes/gameover/game_over.tscn" id="7_yrmwx"]
+[ext_resource type="PackedScene" uid="uid://ckehwsrbo2lsh" path="res://scenes/parallax_background/parallax_background.tscn" id="8_lknmu"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_tvrm4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(162, 334)
 texture = ExtResource("1_ytdfp")
 
@@ -30,3 +33,7 @@ position = Vector2(540, 340)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="hud" parent="CanvasLayer" instance=ExtResource("6_oqnad")]
+
+[node name="GameOver" parent="CanvasLayer" instance=ExtResource("7_yrmwx")]
+
+[node name="ParallaxBackground" parent="." instance=ExtResource("8_lknmu")]

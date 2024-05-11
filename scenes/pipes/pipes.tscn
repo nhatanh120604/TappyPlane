@@ -7,14 +7,14 @@
 [node name="pipes" type="Node2D"]
 script = ExtResource("1_1pgay")
 
+[node name="Laser" parent="." instance=ExtResource("2_f2c0h")]
+
 [node name="upperpipe" parent="." instance=ExtResource("1_ypohp")]
 position = Vector2(0, -80)
 rotation = 3.14159
 
 [node name="lowerpipe" parent="." instance=ExtResource("1_ypohp")]
 position = Vector2(0, 80)
-
-[node name="Laser" parent="." instance=ExtResource("2_f2c0h")]
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(147, 0)

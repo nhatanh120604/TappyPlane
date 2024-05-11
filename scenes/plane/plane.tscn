@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://cyuup1wda8g01"]
+[gd_scene load_steps=11 format=3 uid="uid://cyuup1wda8g01"]
 
 [ext_resource type="Script" path="res://scenes/plane/plane.gd" id="1_82xbg"]
 [ext_resource type="Texture2D" uid="uid://bvdts85cw3dnn" path="res://assets/plane/planes_sheet.png" id="1_v8ypa"]
+[ext_resource type="AudioStream" uid="uid://cy1itmle8gv24" path="res://assets/audio/engine.mp3" id="3_yil43"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cv6o1"]
 atlas = ExtResource("1_v8ypa")
@@ -72,3 +73,7 @@ shape = SubResource("CircleShape2D_rnrf8")
 libraries = {
 "": SubResource("AnimationLibrary_log6a")
 }
+
+[node name="Engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yil43")
+autoplay = true

@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3i55v0ykwyda"]
+[gd_scene load_steps=5 format=3 uid="uid://b3i55v0ykwyda"]
 
 [ext_resource type="Script" path="res://scenes/pipe/pipe.gd" id="1_l6l2y"]
 [ext_resource type="Texture2D" uid="uid://7d1ns43an70m" path="res://assets/pipes/pipe.png" id="1_xp73e"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pbgru"]
-radius = 35.0
-height = 516.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxqsr"]
+size = Vector2(72, 560)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_koc1n"]
+size = Vector2(48, 53)
 
 [node name="pipe" type="Area2D"]
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_l6l2y")
 
@@ -17,7 +20,11 @@ centered = false
 offset = Vector2(-35, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 327)
-shape = SubResource("CapsuleShape2D_pbgru")
+position = Vector2(1, 351)
+shape = SubResource("RectangleShape2D_pxqsr")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 43.5)
+shape = SubResource("RectangleShape2D_koc1n")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

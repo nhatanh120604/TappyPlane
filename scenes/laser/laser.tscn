@@ -1,16 +1,41 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcat3emheqk3v"]
+[gd_scene load_steps=7 format=3 uid="uid://dcat3emheqk3v"]
 
 [ext_resource type="Script" path="res://scenes/laser/laser.gd" id="1_8m38d"]
 [ext_resource type="Texture2D" uid="uid://c5k6qj2jw56mb" path="res://assets/pipes/laser2.png" id="1_rbg5c"]
+[ext_resource type="AudioStream" uid="uid://7l87a8wdibrk" path="res://assets/audio/score.wav" id="3_2v0ho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ra8um"]
 size = Vector2(6, 184)
 
+[sub_resource type="Animation" id="Animation_56bcq"]
+resource_name = "flash"
+length = 1.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wwscp"]
+_data = {
+"flash": SubResource("Animation_56bcq")
+}
+
 [node name="Laser" type="Area2D"]
+collision_layer = 0
 collision_mask = 2
 script = ExtResource("1_8m38d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.25)
 scale = Vector2(1, 7.58333)
 texture = ExtResource("1_rbg5c")
 
@@ -18,4 +43,13 @@ texture = ExtResource("1_rbg5c")
 position = Vector2(15, 0)
 shape = SubResource("RectangleShape2D_ra8um")
 
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wwscp")
+}
+autoplay = "flash"
+
+[node name="Scoresound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_2v0ho")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
